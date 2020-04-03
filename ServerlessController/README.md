@@ -1,4 +1,4 @@
-# MSc_Research_Django
+# ChainFaaS Serverless Controller
  
  The format of the repository is very similar to any other Django project. All the configuration parameters are stored in the [MSc_Research_Django/settings.py](./MSc_Research_Django/settings.py) file. All the sensitive information such as usernames and passwords of the database and rabbitmq server should be stored in a file named *settings.ini* located at /etc/MSc_Research_Django in the following format:
 
