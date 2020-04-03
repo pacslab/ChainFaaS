@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block body_block %}
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Open Blockchain-based Serverless Platform</h1>
+            <p> This request was handled by {{ provider }} and the job ID is {{job_id}}. </p>
+            <!-- <p> This request was handled by {{ provider }}. It took {{ pull_time | floatformat:-4 }} milliseconds to pull the
+                docker image from registry and {{ run_time | floatformat:-4 }} milliseconds to run it. {{ total_time }}, {{providing_time}}</p> -->
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Time (ms)</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Providing Time</td>
+                        <td>{{providing_time}} </td>
+                    </tr>
+                    <tr>
+                        <td>Pull Time</td>
+                        <td>{{ pull_time }} </td>
+                    </tr>
+                    <tr>
+                        <td>Run Time</td>
+                        <td>{{ run_time }} </td>
+                    </tr>
+                    <tr>
+                        <td>Total Time</td>
+                        <td>{{ total_time }} </td>
+                    </tr>
+                </tbody>
+            </table>
+                
+            <p>
+                {{ result|linebreaks }}
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="jumbotron">
+            {% if registered %}
+                <h1>Thank you for registering!</h1>
+            {% else %}
+                <h1>Register Here</h1>
+                    <form enctype="multipart/form-data" method="POST">
+                        {% csrf_token %}
+                        {% bootstrap_form user_form %}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        {#          <input type="submit" name="" value="Register">#}
+                    </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

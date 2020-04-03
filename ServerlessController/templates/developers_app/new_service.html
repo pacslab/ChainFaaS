@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="jumbotron">
+
+            <h1>Add New Function Here</h1>
+
+            <form enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                <table>
+                    {% bootstrap_form service_form %}
+                </table>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock %}

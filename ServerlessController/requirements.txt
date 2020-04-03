@@ -1,0 +1,8 @@
+Django==2.2.5
+django-bootstrap4
+pika
+psycopg2-binary==2.8.3
+requests
+gunicorn==19.9.0
+rabbitmq-admin
+django-import-export

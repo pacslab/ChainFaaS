@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block body_block %}
+    <div class="container">
+        <div class="jumbotron">
+            {% if is_contributing %}
+                <h2>Thank you for being a part of this platform as a provider!</h2>
+                <p></p>
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>CPU</th>
+                        <th>RAM</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td>
+                            {{ user.provider.user.username }}
+                        </td>
+
+                        <td>
+                            {{ user.provider.cpu }}
+                        </td>
+
+                        <td>
+                            {{ user.provider.ram }}
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="text-right">
+                    <a class="btn btn-danger" href="{% url 'providers_app:stop_providing' %}">Stop
+                        contributing</a>
+                    <a class="btn btn-primary" href="#" onclick="show()">Change</a>
+                </div>
+
+                <script>
+                    function show() {
+                        document.getElementById("change").style.display = "block";
+                    }
+                </script>
+
+                <div id="change" class="container" style="display: none">
+
+                    <div class="jumbotron">
+                        <hr>
+                        <h2>Specify the amount of CPU and RAM that you want to contribute.</h2>
+
+                        <form enctype="multipart/form-data" method="POST">
+                            {% csrf_token %}
+                            {% bootstrap_form provider_form %}
+                            <button type="submit" class="btn btn-primary">Start</button>
+                            {#          <input type="submit" name="" value="Register">#}
+                        </form>
+
+                    </div>
+                </div>
+
+            {% else %}
+                <h2>Please run the provider code on your computer to start contributing.</h2>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

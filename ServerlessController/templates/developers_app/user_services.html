@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="jumbotron">
+            <h2>All Functions</h2>
+            <p>A list of all your functions:</p>
+            <div class="table-responsive" id="servicesTable">
+                {% include "developers_app/services_table.html" %}
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        updateService = function (idx) {
+            $(this).click(function (event) {
+                event.preventDefault()
+                $.ajax({
+                    url: $(this).attr('href')
+                }).done(function (data) {
+                    console.log(data)
+                    $('#servicesTable').html(data)
+
+                    $('.stop-btn').each(updateService)
+                    $('.start-btn').each(updateService)
+                    $('.delete-btn').each(updateService)
+                });
+            })
+        }
+
+        runService = function (idx) {
+            $(this).click(function (event) {
+                {#event.preventDefault()#}
+                $.ajax({
+                    url: $(this).attr('href')
+                }).done(function (data) {
+                    $('.run-btn').each(runService)
+                });
+            })
+        }
+
+        $('.stop-btn').each(updateService)
+        $('.start-btn').each(updateService)
+        $('.delete-btn').each(updateService)
+    </script>
+{% endblock %}

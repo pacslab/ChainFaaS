@@ -1,0 +1,85 @@
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Function Name</th>
+        <th>URL</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for service in all_services %}
+        <tr>
+            <td>{{ service.name }}</td>
+            <td>{{ service.docker_container }}</td>
+            {% if  service.active %}
+                <td class="service-status" data-id="{{ service.id }}"> Active</td>
+            {% else %}
+                <td class="service-status" data-id="{{ service.id }}"> Disabled</td>
+            {% endif %}
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn dropdown-toggle"
+                            style="background-color: #2980b9; color:white" data-toggle="dropdown">
+                        Action
+                    </button>
+                    <div class="dropdown-menu">
+                        {% if  service.active %}
+                            <a class="dropdown-item stop-btn" data-serviceid="{{ service.id }}"
+                               href="{% url 'developers_app:stop_service' service.id %}">Stop
+                                Function</a>
+                            <a class="dropdown-item run-btn" data-serviceid="{{ service.id }}"
+                               href="{% url 'developers_app:run_service' service.id %}">Send
+                                a request</a>
+                        {% else %}
+                            <a class="dropdown-item start-btn" data-serviceid="{{ service.id }}"
+                               href="{% url 'developers_app:start_service' service.id %}">Start
+                                Function</a>
+                        {% endif %}
+
+                        <a class="dropdown-item"
+                           href="#" data-toggle="modal" data-target="#DeleteModal{{ service.id }}">Delete
+                            Function</a>
+
+
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <div class="modal" id="DeleteModal{{ service.id }}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Are you sure?</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        By deleting this function, you won't be able to run it on this platform anymore.
+                    </div>
+
+                    <div class="modal-footer">
+                        <a class="btn btn-danger delete-btn" data-dismiss="modal" data-serviceid="{{ service.id }}" role="button"
+                           href="{% url 'developers_app:delete_service' service.id %}">Delete</a>
+
+                        <button type="button" class="btn btn-info"
+                                style="background-color: #2980b9; color:white"
+                                data-dismiss="modal">Close
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    </tbody>
+</table>
