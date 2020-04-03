@@ -1,4 +1,4 @@
-# MSc_Research_Fabric
+# ChainFaaS Blockchain Network (Hyperledger Fabric)
 
 ### Prerequisites and setup:
 
