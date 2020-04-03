@@ -1,11 +1,11 @@
-# MSc_Research_Providers
+# ChainFaaS Compute Providers
 
 
 Follow the steps bellow to add a new provider:
 
 ## Step 1: Register in website
 
-Go to [registration page of OBSP website](http://obsp.sara-dev.com/profiles/register/) and register as a new user. You will 
+Go to [registration page of OBSP website](http://www.chainfaas.com/profiles/register/) and register as a new user. You will 
 later use the username and password created in this step to run the provider code. 
 
 ## Step 2: Install git
@@ -17,9 +17,9 @@ sudo apt install git
 ## Step 3: Clone this repository and go to its directory
 
 ``` bash
-git clone https://github.com/ghaemisr/MSc_Research_Providers
+git clone https://github.com/pacslab/ChainFaaS
 
-cd MSc_Research_Providers
+cd ChainFaaS/ComputeProvider
 ```
 
 ## Step 4: Run setup.sh file
