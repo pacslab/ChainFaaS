@@ -1,10 +1,2 @@
 .\idea
 *.pyc
-settings.ini
-.env.prod.db
-
-/node_modules/*
-/package-lock.json
-/fabric-client-kv-org*
-.idea
-node_modules

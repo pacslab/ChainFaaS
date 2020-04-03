@@ -1,0 +1,4 @@
+.\idea
+*.pyc
+settings.ini
+.env.prod.db
