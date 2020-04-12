@@ -1,10 +1,85 @@
 {% extends "base.html" %}
 {% block body_block %}
+{% load static %}
 
 <div class="container">
   <div class="jumbotron">
-    <h1>ChainFaaS: An Open Blockchain-based Serverless Platform</h1>
+    <h1>ChainFaaS</h1>
+    <h4 class="mb-5">An Open Blockchain-based Serverless Platform</h4>
+
+    <!-- <p>ChainFaaS takes advantage of personal computers to run serverless tasks. And the following are the main features of this platform: </p> -->
+    <div class=container>
+      <div class="row">
+        <div class="col-6">
+          <img src="{% static "MSc_Research_Django/img/team.png" %}" width="50" height="50">
+          <h3>Public</h3>
+          <p>It is public in the sense that anyone can be either a developer, provider or both. 
+            Anyone with excess computational power can connect their computer to this platform. 
+            Developerscan then rent from this vast pool of compute at scale. 
+            A user may choose to be a provider and developer at the same time. 
+          </p>
+        </div>
+
+        <div class="col-6">
+          <img src="{% static "MSc_Research_Django/img/binocular.png" %}" width="50" height="50">
+          <h3>Open</h3>
+          <p>It is open and transparent to everyone. Anyone can observe the transactions on 
+            this platform. They can verify the billing information, and check the status and history of each job. 
+            Every single detail os stored and kept on the blockchain network.</p>     
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <img src="{% static "MSc_Research_Django/img/computer.png" %}" width="50" height="50">
+          <h3>Use of Personal Computers </h3>
+          <p>It is based on the excess computing power available on personal computers. 
+            Regular computer users can rent out their unused computational power by connecting it to a large network of resources.</p>    
+        </div>
+
+        <div class="col-6">
+          <img src="{% static "MSc_Research_Django/img/price.png" %}" width="50" height="50">
+          <h3>Affordable</h3>
+          <p>It is affordable for developers, especially compared to similar centralized (in terms of management) cloud solutions.
+             Given that the functions run on personal computer and there is no server maintenace costs, this platform is cheaper that other serverless solutions. </p>    
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <img src="{% static "MSc_Research_Django/img/responsive.png" %}" width="50" height="50">
+          <h3>Fog and Edge Computing </h3>
+          <p>It embodies edge and fog computing by nature as ChainFaaS can get very close to the end-user. Since in ChainFaaS, 
+            functions run on personal computers, it can be a great platform for edge and fog computing.
+            Developers who need to run IoT applications closer to end-users can use this platform instead of other computing services that run on servers. </p>    
+        </div>
+
+        <div class="col-6">
+          <img src="{% static "MSc_Research_Django/img/user.png" %}" width="50" height="50">
+          <h3>Usability</h3>
+          <p>It is user-friendly and easy to use. ChainFaaS is designed to be used by anyone. 
+            Although it is a sophisticated platform based on the state of the art technology, 
+            the users are not necessarily computer professionals. It is designed in such a way that anyone, 
+            including users with no background in computer science, can easily become a computing provider or blockchain peer. </p>    
+        </div>
+      </div>
+    </div>
+
+    <!-- <p>There are three main parts to this platform: Blockchain network, serverless controller, and excecution network.</p> -->
+    <p>To become a computing provider or developer in this platform, you first need to register as a new user. Go to the <a href="/profiles/register/">registration page</a> to register. </p>
   </div>
+
+  <footer>
+    <div class="row">
+      <div class="mx-auto mb-4 index-footer" >
+          <!-- <span>© Copyright Kards 2016.</span> -->
+          <span>Icons made by <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></span>
+      </div>
+    </div>
+  </footer>
+
 </div>
+
+
 
 {% endblock %}

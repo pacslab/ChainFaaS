@@ -3,7 +3,8 @@ from MSc_Research_Django.settings import CONTROLLER_TOKEN, PATH
 import requests
 import json
 
-hf_server = "134.117.57.133"
+# hf_server = "134.117.57.133"
+hf_server = "206.12.90.50"
 hf_port = "8880"
 controller_token = CONTROLLER_TOKEN
 controller_username = 'controller'

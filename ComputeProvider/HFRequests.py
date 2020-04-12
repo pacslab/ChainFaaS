@@ -3,7 +3,8 @@ import sys
 import json
 import urllib.parse
 
-server = "134.117.57.133"
+# server = "134.117.57.133"
+server = "206.12.90.50"
 port = "8880"
 
 # Register and enroll new user in organization
@@ -242,14 +243,14 @@ if __name__ == "__main__":
     
 
 
-    # token_org1, token_org2 = initialize_network()
+    token_org1, token_org2 = initialize_network()
     if org == "Org1":
         token = token_org1
     elif org == "Org2":
         token = token_org2
 
-    token = register_user(username, org)
-    print(get_logs(token))
+    # token = register_user(username, org)
+    # print(get_logs(token))
     # invoke_balance_transfer_new_user(token, channelName, "monetary", 'org1', 'controller', "600")
     # create_channel(token, channelName)
     # join_channel(token, orgLower, channelName)

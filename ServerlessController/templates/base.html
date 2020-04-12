@@ -9,6 +9,7 @@
     {#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"#}
     {#          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">#}
     {% bootstrap_javascript jquery='full' %}
+    <link rel="stylesheet" type="text/css" href="../static/MSc_Research_Django/css/style.css">
 </head>
 <body>
 {#<nav class="navbar navbar-default navbar-static-top">#}
@@ -22,9 +23,9 @@
 
         <div class="container">
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
-                </li>
+                </li> -->
 
                 {% if user.is_authenticated %}
                     {% if user.provider.active %}
@@ -63,7 +64,7 @@
     </div>
 
 </nav>
-<div class="container">
+<div class="container background-container">
     {#    {% bootstrap_messages %}#}
     {% if messages %}
         <div class="container">

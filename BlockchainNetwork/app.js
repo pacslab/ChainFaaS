@@ -45,8 +45,8 @@ var port = process.env.PORT || hfc.getConfigSetting('port');
 ///////////////////////////////////////////////////////////////////////////////
 //////////////////////////////// SET CONFIGURATONS ////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-var log_stream = fs.createWriteStream("log_time.txt", {flags:'a'});
-log_stream.write("start_time,end_time\n");
+// var log_stream = fs.createWriteStream("log_time.txt", {flags:'a'});
+// log_stream.write("start_time,end_time\n");
 
 app.options('*', cors());
 app.use(cors());
@@ -317,10 +317,10 @@ app.post('/channels/:channelName/chaincodes/:chaincodeName', async function(req,
 	var start_str = new Date().toISOString()
 	let message = await invoke.invokeChaincode(peers, channelName, chaincodeName, fcn, args, req.username, req.orgname);
 	
-	if (fcn == "setTime"){
-		var end_str = new Date().toISOString()
-		log_stream.write(args[0] + ',' + start_str + ',' + end_str + ',' + JSON.stringify(message) + '\n');
-	}
+	// if (fcn == "setTime"){
+	// 	var end_str = new Date().toISOString()
+		// log_stream.write(args[0] + ',' + start_str + ',' + end_str + ',' + JSON.stringify(message) + '\n');
+	// }
 	res.send(message);
 });
 // Query on chaincode on target peers
@@ -446,8 +446,8 @@ app.get('/channels', async function(req, res) {
 });
 
 // Log file
-app.get('/logs', async function(req, res) {
-	logger.debug('================ GET CHANNELS ======================');
-	let message = fs.readFileSync("log_time.txt")
-	res.send(message);
-});
+// app.get('/logs', async function(req, res) {
+// 	logger.debug('================ GET CHANNELS ======================');
+// 	let message = fs.readFileSync("log_time.txt")
+// 	res.send(message);
+// });

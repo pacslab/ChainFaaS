@@ -30,7 +30,7 @@ SECRET_KEY = '*so-zc0w&wc=@&n1bdv((x*j1zfh4=yxh=v5u2_2*8qm=qp=u4'
 # else:
 #     DEBUG = False
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -85,19 +85,19 @@ WSGI_APPLICATION = 'MSc_Research_Django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# For testing from my own computer:
-# if 'runserver' in sys.argv:
-#     DB_HOST = '206.12.88.44'
-#     DB_PORT = '5432'
-#     RMQ_HOST = '206.12.88.44'
-#     RMQ_PORT = '5672'
-#     PATH = r'c:Users/Sara/etc/MSc_Research_Django/settings.ini'
-# For running on cloud using nginx and gunicorn
-# else:
+# Dev mode:
+if 'runserver' in sys.argv:
+    DB_HOST = 'localhost'
+    RMQ_HOST = 'localhost'
+    DEBUG = True
+# Production mode
+else:
+    RMQ_HOST = 'rabbitmq'
+    DB_HOST = 'db'
 
-RMQ_HOST = 'rabbitmq'
 RMQ_PORT = '5672'
 RMQ_MNG_PORT = '15672'
+DB_PORT = '5432'
 PATH = r'./settings.ini'
 
 print(PATH)
@@ -107,8 +107,6 @@ config.read(PATH)
 
 POSTGRES_USER = config.get('postgres', 'POSTGRES_USER')
 POSTGRES_PASS = config.get('postgres', 'POSTGRES_PASS')
-DB_HOST = 'db'
-DB_PORT = '5432'
 
 # RabbitMQ configurations
 RABBITMQ_HOST = RMQ_HOST
@@ -166,7 +164,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+if DEBUG:
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
 LOGIN_URL = '/profiles/user_login'
 
 

@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.contrib import messages
 from providers_app.views import initialize_rabbitmq_user
 import fabric.views as fabric
+from developers_app.models import Services
 from django.contrib.auth.models import User
 
 
@@ -30,6 +31,7 @@ def register(request):
             user.set_password(user.password)
             if user_form.cleaned_data['is_developer']:
                 user.developer.active = True
+                add_default_service(user.developer)
             if user_form.cleaned_data['is_provider']:
                 user.provider.active = True
                 # When a new provider is registered,
@@ -53,6 +55,11 @@ def register(request):
                            {'user_form': user_form,
                             'registered': registered})
 
+
+def add_default_service(developer):
+    default_service = Services.objects.create(developer=developer, provider=None, name="Test Function",
+     docker_container="https://cloud.docker.com/u/ghaemisr/repository/docker/ghaemisr/node-info", active=True)
+    default_service.save()
 
 @login_required
 def change_info(request):
