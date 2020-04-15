@@ -1,5 +1,20 @@
 sudo apt update
-sudo apt install -y python3-pip
-sudo apt install -y python3-django
-pip3 install django-bootstrap4
-pip3 install pika
+sudo apt -y install docker.io
+
+docker ps
+sudo docker ps
+
+sudo usermod -aG docker $USER
+sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+sudo chmod g+rwx "/home/$USER/.docker" -R
+sudo chown "$USER":"$USER" /var/run/docker.sock
+sudo chmod g+rwx /var/run/docker.sock -R
+sudo systemctl enable docker
+
+sudo systemctl start docker
+sudo systemctl enable docker
+
+sudo apt update
+sudo apt  install docker-compose
+
+# pip3 install -r requirements.txt
