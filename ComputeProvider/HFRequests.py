@@ -3,7 +3,6 @@ import sys
 import json
 import urllib.parse
 
-# server = "134.117.57.133"
 server = "206.12.90.50"
 port = "8880"
 
