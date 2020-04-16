@@ -3,7 +3,10 @@ import sys
 import json
 import urllib.parse
 
-server = "206.12.90.50"
+# server = "206.12.90.50"
+# Remeber to change hf_server back to the one above
+# when sending a pull request to the public repo
+server = "localhost"
 port = "8880"
 
 # Register and enroll new user in organization
