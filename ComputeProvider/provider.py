@@ -12,7 +12,9 @@ import math
 import pandas as pd
 
 ready_response_text = 'Done!'
-controller = 'http://206.12.88.44'
+# controller = 'http://206.12.88.44'
+controller = 'http://localhost'
+controller_short = '127.0.0.1'
 username = sys.argv[1]
 password = sys.argv[2]
 
@@ -136,7 +138,7 @@ if re.search('stop', response.text) is None:
 
 credentials = pika.PlainCredentials(username, rabbitmq_password)
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters('206.12.88.44', 5672, credentials=credentials))
+    pika.ConnectionParameters(controller_short, 5672, credentials=credentials))
 
 print("You logged in to RabbitMQ!")
 
