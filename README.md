@@ -1,7 +1,5 @@
 # ChainFaaS: An Open Blockchain-based Serverless Platform
 
-testing
-
 This repository contains all the codes of this project. The codes are divided into 3 parts:
 
 - [Serverless controller](https://github.com/pacslab/ChainFaaS/tree/master/ServerlessController) has all the details of the serverless controller which is implemented in Python using Django web framework. 
