@@ -1,7 +1,6 @@
 import requests
 from requests import ConnectionError
 import pika
-import subprocess
 import re
 import sys
 import time
@@ -10,6 +9,7 @@ import HFRequests
 import os
 import math
 import pandas as pd
+import docker
 
 ready_response_text = 'Done!'
 # controller = 'http://206.12.88.44'
@@ -33,53 +33,31 @@ channelName = "mychannel"
 chaincodeName = "monitoring"
 token = ""
 
+client = docker.from_env()
+container_name = 'provider_container_1'
+
 def run_docker(body):
     start_pull_time = time.time()
-    process = subprocess.Popen(['docker', 'pull', body],
-                               stdout=subprocess.PIPE,
-                               universal_newlines=True)
-    stdout, stderr = process.communicate()
-    # print(stdout, stderr)
+    image = client.images.pull(body)
     print("Pull done!")
     pull_time = int((time.time() - start_pull_time) *1000)
 
     start_run_time = time.time()
-    process = subprocess.Popen(['docker', 'run', body],
-                               stdout=subprocess.PIPE,
-                               universal_newlines=True)
-    stdout, stderr = process.communicate()
+    result = client.containers.run(body, name=container_name)
+    result = result.decode("utf-8") 
     print("Run done!")
-    # print(stdout, stderr)
+
+    print(result)
     run_time = int((time.time() - start_run_time)*1000)
-    return stdout, pull_time, run_time
+    return result, pull_time, run_time
 
 def delete_container_and_image(body):
-    process = subprocess.Popen(['docker', 'ps', '-a'],
-                               stdout=subprocess.PIPE,
-                               universal_newlines=True)
-    stdout, stderr = process.communicate()
-    if body in stdout:
-        df = pd.DataFrame([x.split() for x in stdout.split('\n')])
-        containers = list(df[df[1] == body][0])
-        process = subprocess.Popen(['docker', 'rm'] + containers,
-                                    stdout=subprocess.PIPE,
-                                    universal_newlines=True)
-        stdout, stderr = process.communicate()
-        print(stdout)
 
-    process = subprocess.Popen(['docker', 'images'],
-                                stdout=subprocess.PIPE,
-                                universal_newlines=True)
-    stdout, stderr = process.communicate()
+    filters = {'name': container_name}
+    container_id = client.containers.list(all=True, filters=filters)[0]
+    container_id.remove()
 
-    if body in stdout:
-        df = pd.DataFrame([x.split() for x in stdout.split('\n')])
-        image_id = df[df[0] == body][2][1]
-        process = subprocess.Popen(['docker', 'image', 'rm', image_id],
-                                    stdout=subprocess.PIPE,
-                                    universal_newlines=True)
-        stdout, stderr = process.communicate()
-        print(stdout)
+    client.images.remove(body)
 
 def HF_set_time(job_code, t_time):
     global token
