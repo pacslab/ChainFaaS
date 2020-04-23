@@ -1,31 +1,18 @@
 import subprocess
 import pandas as pd
+import docker
 
-name = "ghaemisr/node-info"
+body = "ghaemisr/node-info"
 
-process = subprocess.Popen(['docker', 'ps', '-a'],
-                               stdout=subprocess.PIPE,
-                               universal_newlines=True)
-stdout, stderr = process.communicate()
-if name in stdout:
-    df = pd.DataFrame([x.split() for x in stdout.split('\n')])
-    containers = list(df[df[1] == "ghaemisr/node-info"][0])
-    process = subprocess.Popen(['docker', 'rm'] + containers,
-                                stdout=subprocess.PIPE,
-                                universal_newlines=True)
-    stdout, stderr = process.communicate()
-    print(stdout)
+client = docker.from_env()
 
-process = subprocess.Popen(['docker', 'images'],
-                               stdout=subprocess.PIPE,
-                               universal_newlines=True)
-stdout, stderr = process.communicate()
+image = client.images.pull(body)
+print(image)
 
-if name in stdout:
-    df = pd.DataFrame([x.split() for x in stdout.split('\n')])
-    image_id = df[df[0] == "ghaemisr/node-info"][2][1]
-    process = subprocess.Popen(['docker', 'image', 'rm', image_id],
-                                stdout=subprocess.PIPE,
-                                universal_newlines=True)
-    stdout, stderr = process.communicate()
-    print(stdout)
+result = client.containers.run(body, name='provider_container_1')
+print(result)
+filters = {'name':'provider_container_1'}
+container_id = client.containers.list(all=True, filters=filters)[0]
+container_id.remove()
+
+client.images.remove(body)
