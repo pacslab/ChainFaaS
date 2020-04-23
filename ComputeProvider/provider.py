@@ -12,9 +12,11 @@ import pandas as pd
 import docker
 
 ready_response_text = 'Done!'
-# controller = 'http://206.12.88.44'
-controller = 'http://localhost'
-controller_short = '127.0.0.1'
+controller = 'http://206.12.88.44'
+controller_short = '206.12.88.44'
+# controller = 'http://localhost'
+# controller_short = '127.0.0.1'
+
 username = sys.argv[1]
 password = sys.argv[2]
 
