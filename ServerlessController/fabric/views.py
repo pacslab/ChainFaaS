@@ -3,10 +3,10 @@ from MSc_Research_Django.settings import CONTROLLER_TOKEN, PATH
 import requests
 import json
 
-hf_server = "206.12.90.50"
+# hf_server = "206.12.90.50"
 # Remeber to change hf_server back to the one above
 # when sending a pull request to the public repo
-# hf_server = "162.246.156.104"
+hf_server = "162.246.156.104"
 hf_port = "8880"
 controller_token = CONTROLLER_TOKEN
 controller_username = 'controller'
