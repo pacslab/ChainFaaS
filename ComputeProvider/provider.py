@@ -12,10 +12,9 @@ import pandas as pd
 import docker
 
 ready_response_text = 'Done!'
-# controller = 'http://206.12.88.44'
-# controller_short = '206.12.88.44'
-controller = 'http://localhost'
-controller_short = '127.0.0.1'
+controller = '206.12.93.78'
+# controller = 'http://localhost'
+# controller_short = '127.0.0.1'
 
 username = sys.argv[1]
 password = sys.argv[2]
@@ -23,11 +22,11 @@ password = sys.argv[2]
 CPU = sys.argv[3]
 RAM = sys.argv[4]
 
-LOGIN_URL = controller + "/profiles/user_login/"
-PROVIDER_URL = controller + "/provider/"
-READY_URL = controller + "/provider/ready"
-NOT_READY_URL = controller + "/provider/not_ready"
-ACK_URL = controller + "/provider/job_ack?job="
+LOGIN_URL = 'http://' + controller + "/profiles/user_login/"
+PROVIDER_URL = 'http://' + controller + "/provider/"
+READY_URL = 'http://' + controller + "/provider/ready"
+NOT_READY_URL = 'http://' + controller + "/provider/not_ready"
+ACK_URL = 'http://' + controller + "/provider/job_ack?job="
 
 rabbitmq_password = username + '_mqtt'
 
@@ -118,7 +117,7 @@ if re.search('stop', response.text) is None:
 
 credentials = pika.PlainCredentials(username, rabbitmq_password)
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(controller_short, 5672, credentials=credentials))
+    pika.ConnectionParameters(controller, 5672, credentials=credentials))
 
 print("You logged in to RabbitMQ!")
 
