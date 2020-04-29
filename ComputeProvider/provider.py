@@ -12,7 +12,7 @@ import pandas as pd
 import docker
 
 ready_response_text = 'Done!'
-controller = '206.12.93.78'
+controller = 'chainfaas.com'
 # controller = 'http://localhost'
 # controller_short = '127.0.0.1'
 
@@ -22,11 +22,11 @@ password = sys.argv[2]
 CPU = sys.argv[3]
 RAM = sys.argv[4]
 
-LOGIN_URL = 'http://' + controller + "/profiles/user_login/"
-PROVIDER_URL = 'http://' + controller + "/provider/"
-READY_URL = 'http://' + controller + "/provider/ready"
-NOT_READY_URL = 'http://' + controller + "/provider/not_ready"
-ACK_URL = 'http://' + controller + "/provider/job_ack?job="
+LOGIN_URL = 'https://' + controller + "/profiles/user_login/"
+PROVIDER_URL = 'https://' + controller + "/provider/"
+READY_URL = 'https://' + controller + "/provider/ready"
+NOT_READY_URL = 'https://' + controller + "/provider/not_ready"
+ACK_URL = 'https://' + controller + "/provider/job_ack?job="
 
 rabbitmq_password = username + '_mqtt'
 
@@ -103,6 +103,8 @@ def on_request(ch, method, props, body):
     delete_container_and_image(body_dict['task'])
 
 s = requests.Session()
+
+print(username)
 
 data = {'username': username,
         'password': password}
