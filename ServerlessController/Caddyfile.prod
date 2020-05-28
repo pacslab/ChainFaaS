@@ -1,0 +1,5 @@
+www.chainfaas.com, chainfaas.com {
+  reverse_proxy http://nginx:80 
+}
+
+
