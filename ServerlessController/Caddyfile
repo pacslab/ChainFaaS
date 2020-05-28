@@ -1,9 +1,5 @@
-
-www.chainfaas.com, chainfaas.com {
-  proxy / 127.0.0.1:2424 {
-    transparent
-    websocket
-  }  
+www.chainfaas.sara-dev.com, chainfaas.sara-dev.com {
+  reverse_proxy http://nginx:80 
 }
 
 
