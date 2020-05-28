@@ -117,6 +117,7 @@ RABBITMQ_PASS = config.get('rabbitmq', 'RABBITMQ_PASS')
 
 # Fabric config
 CONTROLLER_TOKEN = config.get('fabric', 'CONTROLLER_TOKEN')
+USE_FABRIC = True
 
 DATABASES = {
     'default': {
@@ -175,5 +176,3 @@ STATICFILES_FINDERS = (
 )
 
 LOGIN_URL = '/profiles/user_login'
-
-
