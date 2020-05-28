@@ -10,6 +10,7 @@ from providers_app.views import initialize_rabbitmq_user
 import fabric.views as fabric
 from developers_app.models import Services
 from django.contrib.auth.models import User
+from MSc_Research_Django.settings import USE_FABRIC
 
 
 def index(request):
@@ -38,10 +39,11 @@ def register(request):
                 # a new rabbitmq user should be added to the system
                 initialize_rabbitmq_user(user)
                 # TODO: create hyperledger fabric user
-            r = fabric.invoke_new_monetary_account(user.username, '700')
-            if 'jwt expired' in r.text or 'jwt malformed' in r.text or 'User was not found' in r.text:
-                token = fabric.register_user()
-                r = fabric.invoke_new_monetary_account(user.username, '700', token = token)
+            if USE_FABRIC:
+                r = fabric.invoke_new_monetary_account(user.username, '700')
+                if 'jwt expired' in r.text or 'jwt malformed' in r.text or 'User was not found' in r.text:
+                    token = fabric.register_user()
+                    r = fabric.invoke_new_monetary_account(user.username, '700', token = token)
             user.save()
             user = authenticate(username=user_form.cleaned_data['username'], password=user_form.cleaned_data['password'])
             login(request, user)

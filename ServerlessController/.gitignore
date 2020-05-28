@@ -1,6 +1,7 @@
-.\idea
+.idea
 *.pyc
 settings.ini
 .env.prod.db
 .env.prod.mq
 .env.prod
+caddydata*
