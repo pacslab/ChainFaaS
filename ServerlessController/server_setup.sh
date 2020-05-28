@@ -17,4 +17,5 @@ sudo systemctl enable docker
 sudo apt update
 sudo apt  install docker-compose
 
+CADDY_TELEMETRY=on curl https://getcaddy.com | bash -s personal hook.service
 # pip3 install -r requirements.txt

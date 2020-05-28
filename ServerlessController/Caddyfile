@@ -1,16 +1,6 @@
-www.chainfaas.com:443 {
-  tls /etc/letsencrypt/live/chainfaas.com/fullchain.pem /etc/letsencrypt/live/chainfaas.com/privkey.pem
 
-  proxy / 127.0.0.1:80 {
-    transparent
-    websocket
-  }  
-}
-
-chainfaas.com:443 {
-  tls /etc/letsencrypt/live/chainfaas.com/fullchain.pem /etc/letsencrypt/live/chainfaas.com/privkey.pem
-
-  proxy / 127.0.0.1:80 {
+www.chainfaas.com, chainfaas.com {
+  proxy / 127.0.0.1:2424 {
     transparent
     websocket
   }  
