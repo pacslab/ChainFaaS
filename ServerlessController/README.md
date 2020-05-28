@@ -36,15 +36,26 @@ RABBITMQ_PASS:
 CONTROLLER_TOKEN:
  ```
 
-Also, the database and RabbitMQ settings should be added to file named *.env.prod.db* located at the root of the Django project in the following format:
+Also, the database settings should be added to file named *.env.prod.db* located at the root of the Django project in the following format:
 ```bash
 POSTGRES_USER=
 POSTGRES_PASSWORD=
 POSTGRES_DB=
+```
+
+The RabbitMQ settings should be added to file named *.env.prod.mq* located at the root of the Django project in the following format:
+```bash
 RABBITMQ_DEFAULT_USER=
 RABBITMQ_DEFAULT_PASS=
 ```
-
+The following settings should be added to file named *.env.prod* located at the root of the Django project:
+```bash
+SQL_HOST=db
+SQL_PORT=5432
+DATABASE=postgres
+RABBITMQ_HOST=rabbitmq
+RABBITMQ_PORT=5672
+```
 ### Step 3: Run the server_setup.sh file.
 
 By running the server_setup.sh file, all the prerequisites are installed. 

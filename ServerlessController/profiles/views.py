@@ -43,6 +43,9 @@ def register(request):
                 token = fabric.register_user()
                 r = fabric.invoke_new_monetary_account(user.username, '700', token = token)
             user.save()
+            user = authenticate(username=user_form.cleaned_data['username'], password=user_form.cleaned_data['password'])
+            login(request, user)
+            messages.success(request, "Successful Login")
             registered = True
             if user_form.cleaned_data['is_provider']:
                 return render(request, 'providers_app/index.html')
