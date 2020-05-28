@@ -5,8 +5,8 @@ from profiles.models import Provider, Developer
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
-    is_developer = forms.BooleanField(label="Do you want to be a provider?", required=False)
-    is_provider = forms.BooleanField(label="Do you want to be a developer?", required=False)
+    is_provider = forms.BooleanField(label="Do you want to be a provider?", required=False)
+    is_developer = forms.BooleanField(label="Do you want to be a developer?", required=False)
 
     class Meta:
         model = User

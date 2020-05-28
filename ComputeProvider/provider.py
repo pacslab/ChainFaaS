@@ -12,8 +12,7 @@ import pandas as pd
 import docker
 
 ready_response_text = 'Done!'
-controller = 'http://206.12.88.44'
-controller_short = '206.12.88.44'
+controller = 'chainfaas.com'
 # controller = 'http://localhost'
 # controller_short = '127.0.0.1'
 
@@ -23,11 +22,11 @@ password = sys.argv[2]
 CPU = sys.argv[3]
 RAM = sys.argv[4]
 
-LOGIN_URL = controller + "/profiles/user_login/"
-PROVIDER_URL = controller + "/provider/"
-READY_URL = controller + "/provider/ready"
-NOT_READY_URL = controller + "/provider/not_ready"
-ACK_URL = controller + "/provider/job_ack?job="
+LOGIN_URL = 'https://' + controller + "/profiles/user_login/"
+PROVIDER_URL = 'https://' + controller + "/provider/"
+READY_URL = 'https://' + controller + "/provider/ready"
+NOT_READY_URL = 'https://' + controller + "/provider/not_ready"
+ACK_URL = 'https://' + controller + "/provider/job_ack?job="
 
 rabbitmq_password = username + '_mqtt'
 
@@ -46,7 +45,7 @@ def run_docker(body):
 
     start_run_time = time.time()
     result = client.containers.run(body, name=container_name)
-    result = result.decode("utf-8") 
+    result = result.decode("utf-8")
     print("Run done!")
 
     print(result)
@@ -72,7 +71,7 @@ def HF_set_time(job_code, t_time):
 def on_request(ch, method, props, body):
     global token
     print(body)
-    
+
     if body.decode("utf-8") == '"Stop"':
         ch.basic_ack(delivery_tag=method.delivery_tag)
         ch.queue_purge(username)
@@ -96,14 +95,16 @@ def on_request(ch, method, props, body):
     ch.basic_ack(delivery_tag=method.delivery_tag)
     print('sent back the results')
     time.sleep(3)
-    HF_resp = HF_set_time(str(body_dict['job']), str(total_time))
-    while (json.loads(HF_resp.text)['success'] == False):
-        HF_resp = HF_set_time(str(body_dict['job']), str(total_time))
-        if "The time for this job is already set and can't be changed." in json.loads(HF_resp.text)['message']:
-            break
+    # HF_resp = HF_set_time(str(body_dict['job']), str(total_time))
+    # while (json.loads(HF_resp.text)['success'] == False):
+    #     HF_resp = HF_set_time(str(body_dict['job']), str(total_time))
+    #     if "The time for this job is already set and can't be changed." in json.loads(HF_resp.text)['message']:
+    #         break
     delete_container_and_image(body_dict['task'])
 
 s = requests.Session()
+
+print(username)
 
 data = {'username': username,
         'password': password}
@@ -118,7 +119,7 @@ if re.search('stop', response.text) is None:
 
 credentials = pika.PlainCredentials(username, rabbitmq_password)
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(controller_short, 5672, credentials=credentials))
+    pika.ConnectionParameters(controller, 5672, credentials=credentials))
 
 print("You logged in to RabbitMQ!")
 
