@@ -96,11 +96,11 @@ def on_request(ch, method, props, body):
     ch.basic_ack(delivery_tag=method.delivery_tag)
     print('sent back the results')
     time.sleep(3)
-    HF_resp = HF_set_time(str(body_dict['job']), str(total_time))
-    while (json.loads(HF_resp.text)['success'] == False):
-        HF_resp = HF_set_time(str(body_dict['job']), str(total_time))
-        if "The time for this job is already set and can't be changed." in json.loads(HF_resp.text)['message']:
-            break
+    # HF_resp = HF_set_time(str(body_dict['job']), str(total_time))
+    # while (json.loads(HF_resp.text)['success'] == False):
+    #     HF_resp = HF_set_time(str(body_dict['job']), str(total_time))
+    #     if "The time for this job is already set and can't be changed." in json.loads(HF_resp.text)['message']:
+    #         break
     delete_container_and_image(body_dict['task'])
 
 s = requests.Session()
