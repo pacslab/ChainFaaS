@@ -1,10 +1,21 @@
 version: '3.3'
 
 services:
+  caddy:
+    image: "caddy:latest"
+    restart: always
+    volumes:
+      - ./caddydata:/data  # to save certificates on disk
+      # - ./Caddyfile:/etc/caddy/Caddyfile  # to use the Caddyfile
+      - ./Caddyfile.prod:/etc/caddy/Caddyfile  # to use the Caddyfile
+    ports:
+      - 80:80
+      - 443:443
+
   nginx:
     build: ./nginx
-    ports:
-      - 2424:80
+    expose:
+      - 80
     volumes:
       - static_volume:/home/app/web/static
     depends_on:
