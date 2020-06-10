@@ -4,6 +4,7 @@ from developers_app.forms import ServiceForm
 from django.contrib import messages
 from django.db import IntegrityError
 from developers_app.models import Services
+from providers_app.models import Job
 from django.core.exceptions import ObjectDoesNotExist
 from controller_app.views import request_handler
 from datetime import datetime
@@ -52,7 +53,6 @@ def user_services(request):
     return render(request, 'developers_app/user_services.html',
                   {'all_services': all_services,
                    'developer_id': request.user.developer.id})
-
 
 @login_required()
 def stop_service(request, service_id):
@@ -114,3 +114,13 @@ def run_service(request, service_id):
                    'provider': provider, 
                    'job_id': job_id})
 
+@login_required()
+def user_jobs(request):
+    """
+    Shows all jobs that belong to a user.
+    """
+    services = Services.objects.filter(developer=request.user.developer)
+    all_jobs = Job.objects.filter(service__in=services).order_by('pk').reverse()
+    return render(request, 'developers_app/user_jobs.html',
+                  {'all_jobs': all_jobs,
+                   'developer_id': request.user.developer.id})

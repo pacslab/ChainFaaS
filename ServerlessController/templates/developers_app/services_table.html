@@ -36,6 +36,9 @@
                             <a class="dropdown-item run-btn" data-serviceid="{{ service.id }}"
                                href="{% url 'developers_app:run_service' service.id %}">Send
                                 a request</a>
+                            <a class="dropdown-item run-async-btn" data-serviceid="{{ service.id }}"
+                            href="{% url 'developers_app:run_service' service.id %}">Send
+                                an async request</a>
                         {% else %}
                             <a class="dropdown-item start-btn" data-serviceid="{{ service.id }}"
                                href="{% url 'developers_app:start_service' service.id %}">Start

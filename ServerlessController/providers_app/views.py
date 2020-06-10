@@ -108,6 +108,10 @@ def add_task_to_queue(request, task, username):
     task_dict = json.dumps(task)
     client.call(username, task_dict)
     response = client.response
+    job = get_object_or_404(Job, pk=task['job'])
+    job.corr_id = client.corr_id
+    job.response = response
+    job.save(update_fields=['corr_id', 'response'])
     if response is None:
         return
     return json.loads(response.decode("utf-8"))
