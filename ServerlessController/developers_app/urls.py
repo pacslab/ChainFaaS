@@ -13,5 +13,6 @@ urlpatterns = [
     path('<int:service_id>/start_service/', views.start_service, name='start_service'),
     path('<int:service_id>/delete_service/', views.delete_service, name='delete_service'),
     path('<int:service_id>/run/', views.run_service, name='run_service'),
+    path('<int:service_id>/run_async/', views.run_service_async, name='run_service_async'),
     path('<int:job_id>/job_info/', views.job_info, name='job_info'),
 ]

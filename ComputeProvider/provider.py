@@ -13,8 +13,10 @@ import docker
 
 ready_response_text = 'Done!'
 # controller = 'chainfaas.com'
-controller = 'localhost'
-controller_temp = 'localhost:8080'
+controller = 'chainfaas.sara-dev.com'
+controller_temp = 'chainfaas.sara-dev.com'
+# controller = 'localhost'
+# controller_temp = 'localhost:8080'
 # controller_short = '127.0.0.1'
 
 username = sys.argv[1]
