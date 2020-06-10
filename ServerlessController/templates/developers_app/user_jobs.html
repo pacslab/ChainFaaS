@@ -19,10 +19,17 @@
                     <tbody>
                         {% for job in all_jobs %}
                         <tr>
-                            <td>Job {{ job.id }}</td>
+                            <td> <a href="{% url 'developers_app:job_info' job_id=job.id %}">Job {{ job.id }}</a>  
+                            </td>
                             <td>{{ job.service.name }}</td>
                             
-                            <td>{{ job.finished }}</td>
+                            <td> 
+                                {% if job.finished %}
+                                    Finished
+                                {% else %}
+                                    Not finished
+                                {% endif %}
+                            </td>
                         </tr>
                         {% endfor %}
                 

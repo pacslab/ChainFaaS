@@ -10,6 +10,8 @@ from controller_app.views import request_handler
 from datetime import datetime
 from pytz import timezone
 from MSc_Research_Django.settings import TIME_ZONE
+from datetime import timedelta
+import json
 
 
 def index(request):
@@ -124,3 +126,20 @@ def user_jobs(request):
     return render(request, 'developers_app/user_jobs.html',
                   {'all_jobs': all_jobs,
                    'developer_id': request.user.developer.id})
+
+
+@login_required()
+def job_info(request, job_id):
+    """
+    Shows all jobs that belong to a user.
+    """
+    job = Job.objects.get(pk=job_id)
+    providing_time = int(((job.ack_time - job.start_time)/timedelta(microseconds=1))/1000)
+    return render(request, 'final_response.html',
+                  {'result': json.loads(job.response)['Result'],
+                   'providing_time': providing_time,
+                   'pull_time': job.pull_time,
+                   'run_time': job.run_time,
+                   'total_time': job.total_time,
+                   'provider': job.provider.user.username, 
+                   'job_id': job.pk})
