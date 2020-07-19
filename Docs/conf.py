@@ -39,6 +39,9 @@ github_doc_root = 'https://github.com/pacslab/ChainFaaS/tree/master/docs/'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.coverage',
+    'sphinx.ext.napoleon',
     'recommonmark',
     'sphinx_rtd_theme',
 ]
