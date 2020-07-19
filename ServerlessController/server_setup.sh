@@ -15,8 +15,11 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 sudo apt update
-sudo apt  install python3-pip
-pip3 install --upgrade docker-compose
+
+# install docker compose
+echo "Installing docker compose"
+sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 CADDY_TELEMETRY=on curl https://getcaddy.com | bash -s personal hook.service
 # pip3 install -r requirements.txt

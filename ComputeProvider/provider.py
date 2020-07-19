@@ -12,9 +12,9 @@ import pandas as pd
 import docker
 
 ready_response_text = 'Done!'
-# controller = 'chainfaas.com'
-controller = 'chainfaas.sara-dev.com'
-controller_temp = 'chainfaas.sara-dev.com'
+controller = 'chainfaas.com'
+# controller = 'chainfaas.sara-dev.com'
+# controller_temp = 'chainfaas.sara-dev.com'
 # controller = 'localhost'
 # controller_temp = 'localhost:8080'
 # controller_short = '127.0.0.1'
@@ -25,11 +25,11 @@ password = sys.argv[2]
 CPU = sys.argv[3]
 RAM = sys.argv[4]
 
-LOGIN_URL = 'http://' + controller_temp + "/profiles/user_login/"
-PROVIDER_URL = 'http://' + controller_temp + "/provider/"
-READY_URL = 'http://' + controller_temp + "/provider/ready"
-NOT_READY_URL = 'http://' + controller_temp + "/provider/not_ready"
-ACK_URL = 'http://' + controller_temp + "/provider/job_ack?job="
+LOGIN_URL = 'https://' + controller + "/profiles/user_login/"
+PROVIDER_URL = 'https://' + controller + "/provider/"
+READY_URL = 'https://' + controller + "/provider/ready"
+NOT_READY_URL = 'https://' + controller + "/provider/not_ready"
+ACK_URL = 'https://' + controller + "/provider/job_ack?job="
 
 rabbitmq_password = username + '_mqtt'
 
