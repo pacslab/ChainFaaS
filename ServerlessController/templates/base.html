@@ -59,7 +59,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'profiles:user_login' %}">Login</a>
                     </li>
+                    
                 {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profiles:user_login' %}">Docs</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -84,6 +89,12 @@
     {% endblock %}
 </div>
 
-
+<footer>
+    <div class="row">
+      <div class="mx-auto mb-4 index-footer" >
+          <span>© Copyright <a href="https://pacs.eecs.yorku.ca/">PACS Lab</a> 2020.</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
