@@ -206,7 +206,7 @@ def initialize_network():
     monitoringChaincode = 'monitoring'
     monitoringPath= "./artifacts/src/monitoring"
     chaincodeLang = "node"
-    user_list = ['sghaemi', 'admin', 'controller', 'provider_test', 'provider_test2', 'provider_test3']
+    user_list = ['sghaemi', 'admin', 'controller', 'cc_provider1', 'cc_provider2', 'cc_provider3', 'cc_provider4']
 
     token1 = register_user('temp', 'Org1')
     token2 = register_user('temp', 'Org2')
@@ -223,7 +223,7 @@ def initialize_network():
     instantiate_chaincode(token2, 'org2', channelName, monitoringChaincode, chaincodeLang)
 
     for user in user_list:
-        invoke_balance_transfer_new_user(token1, channelName, monetaryChaincode, 'org1', user, "600")
+        invoke_balance_transfer_new_user(token1, channelName, monetaryChaincode, 'org1', user, "700")
     
     return token1, token2
 
@@ -245,13 +245,13 @@ if __name__ == "__main__":
     
 
 
-    token_org1, token_org2 = initialize_network()
+    # token_org1, token_org2 = initialize_network()
     if org == "Org1":
         token = token_org1
     elif org == "Org2":
         token = token_org2
 
-    # token = register_user(username, org)
+    token = register_user(username, org)
     # print(get_logs(token))
     # invoke_balance_transfer_new_user(token, channelName, "monetary", 'org1', 'controller', "600")
     # create_channel(token, channelName)
@@ -267,11 +267,14 @@ if __name__ == "__main__":
     # query_job(token, channelName, chaincodeName, orgLower, "100")
     # invoke_balance_transfer_from_fabcar(token, channelName, chaincodeName, orgLower)
     # invoke_balance_transfer(token, channelName, chaincodeName, orgLower)
-    # query_account(token, channelName, 'monetary', orgLower, 'controller')
-    # query_account(token, channelName, "monetary", orgLower, 'admin')
+    # query_account(token, channelName, 'monetary', orgLower, 'developer_test')
+    # query_account(token, channelName, "monetary", orgLower, 'cc_provider1')
+    # query_account(token, channelName, "monetary", orgLower, 'cc_provider2')
+    # query_account(token, channelName, "monetary", orgLower, 'cc_provider3')
+    # query_account(token, channelName, "monetary", orgLower, 'cc_provider4')
     # invoke_balance_transfer_new_user(token, channelName, "monetary", orgLower, "controller", "600")
     # invoke_balance_transfer_new_user(token, channelName, "monetary", orgLower, "admin", "600")
-    # invoke_balance_transfer_new_user(token, channelName, "monetary", orgLower, "sghaemi", "600")
+    # invoke_balance_transfer_new_user(token, channelName, "monetary", orgLower, "sara_test", "600")
 
 
     # get_installed_chaincodes(token, orgLower)
