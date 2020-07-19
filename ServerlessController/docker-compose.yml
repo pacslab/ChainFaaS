@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.7'
 
 services:
   caddy:
@@ -6,8 +6,8 @@ services:
     restart: always
     volumes:
       - ./caddydata:/data  # to save certificates on disk
-      # - ./Caddyfile:/etc/caddy/Caddyfile  # to use the Caddyfile
-      - ./Caddyfile.prod:/etc/caddy/Caddyfile  # to use the Caddyfile
+      - ./Caddyfile:/etc/caddy/Caddyfile  # to use the Caddyfile
+      # - ./Caddyfile.prod:/etc/caddy/Caddyfile  # to use the Caddyfile
     ports:
       - 80:80
       - 443:443

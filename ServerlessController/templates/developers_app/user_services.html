@@ -31,16 +31,16 @@
             })
         }
 
-        runService = function (idx) {
-            $(this).click(function (event) {
-                {#event.preventDefault()#}
-                $.ajax({
-                    url: $(this).attr('href')
-                }).done(function (data) {
-                    $('.run-btn').each(runService)
-                });
-            })
-        }
+        // runService = function (idx) {
+        //     $(this).click(function (event) {
+        //         {#event.preventDefault()#}
+        //         $.ajax({
+        //             url: $(this).attr('href')
+        //         }).done(function (data) {
+        //             $('.run-btn').each(runService)
+        //         });
+        //     })
+        // }
 
         $('.stop-btn').each(updateService)
         $('.start-btn').each(updateService)

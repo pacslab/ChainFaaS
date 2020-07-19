@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="jumbotron">
+            <h2>All Jobs</h2>
+            <p>A list of all your jobs:</p>
+            <div class="table-responsive" id="jobsTable">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Function</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for job in all_jobs %}
+                        <tr>
+                            <td> <a href="{% url 'developers_app:job_info' job_id=job.id %}">Job {{ job.id }}</a>  
+                            </td>
+                            <td>{{ job.service.name }}</td>
+                            
+                            <td> 
+                                {% if job.finished %}
+                                    Finished
+                                {% else %}
+                                    Not finished
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
