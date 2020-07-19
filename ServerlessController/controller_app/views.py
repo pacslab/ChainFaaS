@@ -11,7 +11,7 @@ from pytz import timezone
 from MSc_Research_Django.settings import TIME_ZONE, USE_FABRIC
 
 
-def request_handler(request, service, start_time):
+def request_handler(request, service, start_time, run_async=False):
     """
     Gets the request and the corresponding service and returns the response and the corresponding provider
     :param request:
