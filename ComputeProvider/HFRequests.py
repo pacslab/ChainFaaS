@@ -3,7 +3,7 @@ import sys
 import json
 import urllib.parse
 
-server = "206.12.90.50"
+server = "52.152.219.169"
 # Remeber to change hf_server back to the one above
 # when sending a pull request to the public repo
 # server = "localhost"
