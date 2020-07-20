@@ -16,13 +16,6 @@ To sum up, ChainFaaS offers an open blockchain-based serverless platform with th
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-    components.md
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   
+   components.md
 ```
