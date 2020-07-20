@@ -21,5 +21,6 @@ To sum up, ChainFaaS offers an open blockchain-based serverless platform with th
     implementation.md
     getstarted.md
     publications.md
+    getstarted.md
 
 ```
