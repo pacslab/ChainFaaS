@@ -12,8 +12,7 @@ To sum up, ChainFaaS offers an open blockchain-based serverless platform with th
 * It is user-friendly and easy to use.
 
 
-```
-eval_rst
+```eval_rst
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
