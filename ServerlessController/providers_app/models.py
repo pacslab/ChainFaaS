@@ -17,3 +17,5 @@ class Job(models.Model):
     total_time = models.IntegerField(default=0)
     cost = models.FloatField(default=0.0)
     finished = models.BooleanField(default=False)
+    corr_id = models.UUIDField(default=0, db_index=True)
+    response = models.TextField(default='')
