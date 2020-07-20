@@ -11,7 +11,7 @@ This repository contains all the codes of this project. The codes are divided in
 ## Documentations
 For more details about this project, visit the [documentations website](https://chainfaas.readthedocs.io/).
 
-## Peer Reviewd Paper
+## Publications
 The [peer reviewd paper of this project](https://ieeexplore.ieee.org/document/9143110) is published in IEEE Access journal.
 
 ## Citation
