@@ -1,18 +1,18 @@
 # Getting Started
 
-In the current prototype of ChainFaaS, you can participate in the network as a provider or a developer. Since the platform is still running on a test netowrk, no real currency is exchanged in the transactions. To use the test ChainFaaS network, you should first register in [the port chainfaas.com](https://chainfaas.com/) and login to your account. During the registration, you can choose to participate as a provider or a developer or both. 
+In the current prototype of ChainFaaS, you can participate in the network as a provider or a developer. Since the platform is still running on a test network, no real currency is exchanged in the transactions. To use the test ChainFaaS network, you should first register in [the chainfaas.com portal](https://chainfaas.com/) and login to your account. During the registration, you can choose to participate as a provider or a developer or both. 
 
 ## Developers
 
-As a developer, you can run you functions on this serverless platform. The functions should be uploaded as Docker containers to the [Docker Hub](https://hub.docker.com/). You would need the link to your container to create a new function on ChainFaaS. 
+As a developer, you can run your functions on this serverless platform. The functions should be uploaded as Docker containers in the [Docker Hub](https://hub.docker.com/). You would need the link to your container to create a new function on ChainFaaS. 
 
-When you create a new account on ChainFaaS, an example function is automatically added to your account so that you can explore the functionalities of the platform. After a successful login, under the developer tab, go to "Your Functions" to see the test function. 
+When you create a new account on ChainFaaS, an example function is automatically added to your account so that you can explore the functionalities of the platform. After a successful login, under the Developer tab, go to "Your Functions" to see the test function. 
 
 ![Problem loading your functions image](img/yourFunctions.png)
 
-In the "Your Functions" page, you can see a list all the functions you have added to ChainFaaS as well as their status. For each function, you can activate the following actions:
+In the "Your Functions" page, you can see a list of all the functions you have added to ChainFaaS, as well as their status. For each function, you can activate the following actions:
 
-* **Stop Function:** If the function is active, you can stop the function to disable the function in the ChainFaaS network. When a function is disabled, no one can send requests to this function. 
+* **Stop Function:** If the function is active, you can stop the function to disable it in the ChainFaaS network. When a function is disabled, no one can send requests to this function. 
 
 * **Send a Request:** Choosing this action will send a synchronous request to the function. The page will go to a loading mode till a response is received from ChainFaaS. This may take a few seconds to finish.   
 
