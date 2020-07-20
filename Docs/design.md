@@ -1,4 +1,4 @@
-# System Design of ChainFaaS
+# System Design
 
 A detailed architecture of ChainFaaS with a complete description of the process of serving a request is shown in the following figure. The developer is the owner of the function who can have clients sending requests to their function. These clients can be the developer themselves, a program owned by the developer, or anyone else. The developer can also choose to store the result of their function in a separate storage. This can be specified in the container they upload to the system. The result storage block in the following image represents this storage unit. 
 
