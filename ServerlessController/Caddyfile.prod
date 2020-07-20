@@ -1,4 +1,5 @@
 www.chainfaas.com, chainfaas.com {
+  tls /data/full.pem /data/private.key
   reverse_proxy http://nginx:80 
 }
 

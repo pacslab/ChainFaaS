@@ -3,11 +3,16 @@
 
     <div class="container">
         <div class="jumbotron">
-            <h1>Open Blockchain-based Serverless Platform</h1>
+            <h1>Response</h1>
             <p> This request was handled by {{ provider }} and the job ID is {{job_id}}. </p>
             <!-- <p> This request was handled by {{ provider }}. It took {{ pull_time | floatformat:-4 }} milliseconds to pull the
                 docker image from registry and {{ run_time | floatformat:-4 }} milliseconds to run it. {{ total_time }}, {{providing_time}}</p> -->
-
+            <h3>Results: </h3>
+                <p>
+                    {{ result|linebreaks }}
+                </p>
+            <h3>Performance Metrics</h3>
+            <p>To better understand the performance metrics shown in this page, visit [the docs](https://chainfaas.readthedocs.io/en/latest/pref.html).</p>
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -35,9 +40,7 @@
                 </tbody>
             </table>
                 
-            <p>
-                {{ result|linebreaks }}
-            </p>
+            
         </div>
     </div>
 
