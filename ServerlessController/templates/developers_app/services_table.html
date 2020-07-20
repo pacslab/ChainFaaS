@@ -35,10 +35,10 @@
                                 Function</a>
                             <a class="dropdown-item run-btn" data-serviceid="{{ service.id }}"
                                href="{% url 'developers_app:run_service' service.id %}">Send
-                                a request</a>
+                                a Request</a>
                             <a class="dropdown-item run-async-btn" data-serviceid="{{ service.id }}"
                             href="{% url 'developers_app:run_service_async' service.id %}">Send
-                                an async request</a>
+                                an Async Request</a>
                         {% else %}
                             <a class="dropdown-item start-btn" data-serviceid="{{ service.id }}"
                                href="{% url 'developers_app:start_service' service.id %}">Start
