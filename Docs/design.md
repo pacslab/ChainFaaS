@@ -1,0 +1,18 @@
+# System Design of ChainFaaS
+
+A detailed architecture of ChainFaaS with a complete description of the process of serving a request is shown in the following figure. The developer is the owner of the function who can have clients sending requests to their function. These clients can be the developer themselves, a program owned by the developer, or anyone else. The developer can also choose to store the result of their function in a separate storage. This can be specified in the container they upload to the system. The result storage block in the following image represents this storage unit. 
+
+![Problem loading overview image](img/overview.png "The detailed architecture of ChainFaaS and the way a request is served in the network (MM stands for monitoring module and Sig. stands for signature.)")
+
+The scheduler in the serverless controller is responsible for scheduling the jobs, i.e., functions, and computing providers. It creates a new container that includes the function, a monitoring module (MM), and the controller's signature (Sig.). The module is designed to send back the run-time metrics of the job to the monitoring ledger. The signature is used to verify the container's creator to be the controller and not a malicious entity. When an appropriate provider is found for the job, the controller asks the monitoring ledger to keep a record of the job. The job ID stored there should be the same as the one the monitoring module later uses to record the job service time. The assigned provider is the only one who can have the job's run time recorded on the ledger. A detailed explanation of each step in the above image follows:
+
+1. For a function to be available in the system, the developer first needs to submit it to ChainFaaS. To do so, the developer sets the access link and characteristics of the function in the ChainFaaS cloud portal. From the moment the function is submitted, others can send requests for that function to the serverless controller.
+1. As soon as the controller receives a request for a function, a job is created, and the process starts.
+1. The scheduler then adds the monitoring module (MM) to the function and wraps it in a new container with the controller's signature. The monitoring module is responsible for sending the job processing time to the monitoring chain in step 8. The signature is used in the provider to verify that the job has been sent from the controller.
+1. The next step is for the scheduler to assign an appropriate provider to the job. This assignment is done based on a selection algorithm that takes into account the computational capability of the provider and its availability. 
+1. When a computing provider is found for the function, the controller sends a record-request to the monitoring ledger. In this request, the controller asks the blockchain network to add a new job to their records. The information added to the record includes the job ID, the developer of the job, and the provider assigned to the job. 
+1. The selected provider then pulls the container from the registry and runs it.
+1. In the next step, the provider sends back the results to the target storage.
+1. The monitoring module then uses the job ID received from the controller to ask the monitoring ledger to keep a record of the job's run time metrics. 
+1. In the next step, the monitoring chain charges the developer's account by transferring the amount of bill to the provider's account on the monetary ledger.
+1. Finally, the result storage, which is managed and owned by the developer, sends back the results to the end-user. The developer can have the end-user manually get the result from the results storage or have the storage share the results with end-user whenever available.
