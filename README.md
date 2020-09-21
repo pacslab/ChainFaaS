@@ -6,7 +6,7 @@ This repository contains all the codes of this project. The codes are divided in
 
 - [Compute provider](https://github.com/pacslab/ChainFaaS/tree/master/ComputeProvider) contains the program that providers should run on their computer to start participating in the network. 
 
-- [BlockchainNetwork](https://github.com/pacslab/ChainFaaS/tree/master/ServerlessController) has the details of the implemented Hyperledger Fabric.
+- [BlockchainNetwork](https://github.com/pacslab/ChainFaaS/tree/master/BlockchainNetwork) has the details of the implemented Hyperledger Fabric.
 
 ## Documentations
 For more details about this project, visit the [documentations website](https://chainfaas.readthedocs.io/).
