@@ -5,7 +5,7 @@ Follow the steps bellow to add a new provider:
 
 ## Step 1: Register in website
 
-Go to [registration page of OBSP website](http://www.chainfaas.com/profiles/register/) and register as a new user. You will 
+Go to [registration page of ChainFaaS website](http://www.chainfaas.com/profiles/register/) and register as a new user. You will 
 later use the username and password created in this step to run the provider code. 
 
 ## Step 2: Install git
