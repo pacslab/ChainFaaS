@@ -8,11 +8,11 @@ This repository contains all the codes of this project. The codes are divided in
 
 - [BlockchainNetwork](https://github.com/pacslab/ChainFaaS/tree/master/BlockchainNetwork) has the details of the implemented Hyperledger Fabric.
 
-## Documentations
-For more details about this project, visit the [documentations website](https://chainfaas.readthedocs.io/).
+## Documentation
+For more details about this project, visit the [documentation website](https://chainfaas.readthedocs.io/).
 
 ## Publications
-The [peer reviewd paper of this project](https://ieeexplore.ieee.org/document/9143110) is published in IEEE Access journal.
+The [peer reviewed paper of this project](https://ieeexplore.ieee.org/document/9143110) is published in IEEE Access journal.
 
 ## Citation
 
